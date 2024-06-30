@@ -4,6 +4,7 @@ import {
   AvatarImage,
 } from "@/components/shadcn/ui/avatar";
 import { useStore } from "@/lib/useStore";
+import { cn } from "@/lib/utils";
 
 const GeneralInfo: React.FC = () => {
   const { generalInfo } = useStore();
@@ -26,6 +27,13 @@ const GeneralInfo: React.FC = () => {
       <h6 className="text-center font-medium print:leading-loose">
         {generalInfo?.jobTitle || "----"}
       </h6>
+      <span
+        className={cn("mt-1 text-center text-sm italic print:leading-loose", {
+          hidden: !generalInfo?.inspiringQuote,
+        })}
+      >
+        "{generalInfo?.inspiringQuote}"
+      </span>
     </div>
   );
 };

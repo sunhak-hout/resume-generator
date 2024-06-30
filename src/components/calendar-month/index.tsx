@@ -10,13 +10,13 @@ const monthRange = Array.from({ length: 12 }, (_, i) => ({
 }));
 
 interface Props {
-  value?: Date;
-  onChange: (value: Date) => void;
+  value?: Date | string;
+  onChange: (value: Date | null) => void;
 }
 
 const CalendarMonth: React.FC<Props> = ({ value, onChange }) => {
   const [selectedYear, setSelectedYear] = useState(
-    value?.getFullYear() || currentYear,
+    value ? new Date(value).getFullYear() : currentYear,
   );
 
   const handleDecreaseYear = () => {
@@ -28,11 +28,17 @@ const CalendarMonth: React.FC<Props> = ({ value, onChange }) => {
   };
 
   const checkSelectedMonth = (month: number) => {
-    return month === value?.getMonth() && selectedYear === value?.getFullYear();
+    return (
+      value &&
+      month === new Date(value).getMonth() &&
+      selectedYear === new Date(value).getFullYear()
+    );
   };
 
   const handleChangeMonth = (month: number) => {
-    onChange(new Date(selectedYear, month, 1));
+    onChange(
+      checkSelectedMonth(month) ? null : new Date(selectedYear, month, 1),
+    );
   };
 
   return (

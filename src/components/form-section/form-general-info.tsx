@@ -22,6 +22,7 @@ const generalInfoSchema = z.object({
   firstName: z.string(),
   lastName: z.string(),
   jobTitle: z.string(),
+  inspiringQuote: z.string(),
 });
 
 export type GeneralInfo = z.infer<typeof generalInfoSchema>;
@@ -39,6 +40,7 @@ const FormGeneralInfo: React.FC = () => {
       firstName: storedGeneralInfo?.firstName || "",
       lastName: storedGeneralInfo?.lastName || "",
       jobTitle: storedGeneralInfo?.jobTitle || "",
+      inspiringQuote: storedGeneralInfo?.inspiringQuote || "",
     },
   });
 
@@ -126,6 +128,19 @@ const FormGeneralInfo: React.FC = () => {
                 <FormLabel>Job Title</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g. Full-Stack Developer" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="inspiringQuote"
+            render={({ field }) => (
+              <FormItem className="col-span-2">
+                <FormLabel>Inspiring Quote (Optional)</FormLabel>
+                <FormControl>
+                  <Input placeholder="e.g. Think Big, Dream Big" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
