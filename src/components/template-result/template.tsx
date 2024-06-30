@@ -2,6 +2,7 @@ import { forwardRef } from "react";
 import ContactInfo from "./contact-info";
 import GeneralInfo from "./general-info";
 import WorkExperiences from "./work-experiences";
+import EducationBackground from "./education-background";
 
 const Template = forwardRef<HTMLDivElement>((_, ref) => {
   return (
@@ -15,7 +16,10 @@ const Template = forwardRef<HTMLDivElement>((_, ref) => {
       </div>
 
       <div className="absolute right-0 top-0 h-full w-[70%] px-4 py-6">
-        <WorkExperiences />
+        <div className="flex flex-col gap-4">
+          <WorkExperiences />
+          <EducationBackground />
+        </div>
       </div>
     </div>
   );

@@ -9,13 +9,13 @@ import {
 import { Input } from "@/components/shadcn/ui/input";
 import { useStore } from "@/lib/useStore";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Compressor from "compressorjs";
 import { ChangeEventHandler, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Card } from "../shadcn/ui/card";
 import FormDivider from "./form-divider";
 import FormSectionTitle from "./form-section-title";
-import Compressor from "compressorjs";
 
 const generalInfoSchema = z.object({
   photo: z.string(),
