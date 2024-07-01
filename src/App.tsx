@@ -1,4 +1,10 @@
-import { Tangent } from "lucide-react";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/shadcn/ui/drawer";
+
+import { FileText, Tangent, X } from "lucide-react";
 import { FormSection } from "./components/form-section";
 import { Button } from "./components/shadcn/ui/button";
 import TemplateResult from "./components/template-result";
@@ -7,10 +13,12 @@ function App() {
   return (
     <div className="bg-secondary">
       <div className="sticky top-0 z-50 h-16 bg-white shadow">
-        <div className="container flex h-full items-center gap-2">
+        <div className="container flex h-full items-center gap-2 px-4 sm:px-8">
           <div className="mr-auto flex items-baseline">
             <div className="relative">
-              <h6 className="text-2xl font-extrabold">Resume Generator.</h6>
+              <h6 className="text-lg font-extrabold sm:text-2xl">
+                Resume Generator.
+              </h6>
               <Tangent
                 className="absolute -right-3 top-0 h-4 w-4 -rotate-90"
                 strokeWidth={4}
@@ -38,12 +46,40 @@ function App() {
         </div>
       </div>
 
-      <div className="container grid h-[calc(100lvh-theme(space.16))] w-lvw grid-cols-2 overscroll-none">
-        <div className="container relative h-full w-full overflow-auto py-8">
+      <div className="container grid h-[calc(100dvh-theme(space.16))] w-lvw grid-cols-2 gap-8 overscroll-none px-4 sm:px-8">
+        <div className="scrollbar-light-transparent relative col-span-2 h-full w-full overflow-auto py-8 lg:col-span-1">
           <FormSection />
         </div>
-        <div className="container relative h-full w-full overflow-auto bg-secondary py-8">
+        <div className="scrollbar-light-transparent relative hidden h-full w-full overflow-auto py-8 lg:block">
           <TemplateResult />
+        </div>
+
+        <div className="lg:hidden">
+          <Drawer>
+            <DrawerTrigger>
+              <Button
+                className="fixed bottom-6 right-6 gap-2 rounded-full lg:hidden"
+                size="lg"
+              >
+                <FileText />
+                Preview
+              </Button>
+            </DrawerTrigger>
+            <DrawerContent>
+              <div className="scrollbar-light-transparent relative h-[calc(100dvh-theme(space.16))] w-full overflow-auto bg-secondary p-4">
+                <TemplateResult />
+              </div>
+              <DrawerTrigger>
+                <Button
+                  className="fixed bottom-6 right-6 gap-2 rounded-full lg:hidden"
+                  size="lg"
+                >
+                  <X />
+                  Close
+                </Button>
+              </DrawerTrigger>
+            </DrawerContent>
+          </Drawer>
         </div>
       </div>
     </div>

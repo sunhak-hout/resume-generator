@@ -91,25 +91,29 @@ const TemplateResult: React.FC = () => {
             Preview your resume on realtime updates.
           </p>
         </div>
+
+        {/* debug purpose */}
         <Button
           size="icon"
           variant="outline"
-          className="rounded-full"
+          className="hidden flex-shrink-0 rounded-full"
           onClick={handlePreview}
         >
           <Send />
         </Button>
+
         <Button
           size="icon"
           variant="outline"
-          className="rounded-full"
+          className="flex-shrink-0 rounded-full"
           onClick={handleDownload}
         >
           {downloading ? <Loader className="animate-spin" /> : <Download />}
         </Button>
       </div>
 
-      <div className="h-auto" ref={canvasRef} />
+      {/* debug purpose */}
+      <div className="h-auto hidden" ref={canvasRef} />
 
       <div className="relative overflow-hidden">
         <div ref={resumeContainerRef}>

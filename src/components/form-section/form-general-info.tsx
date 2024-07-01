@@ -98,8 +98,8 @@ const FormGeneralInfo: React.FC = () => {
             control={form.control}
             name="firstName"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>First name</FormLabel>
+              <FormItem className="col-span-2 sm:col-span-1">
+                <FormLabel>First Name</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g. John" {...field} />
                 </FormControl>
@@ -111,8 +111,8 @@ const FormGeneralInfo: React.FC = () => {
             control={form.control}
             name="lastName"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last name</FormLabel>
+              <FormItem className="col-span-2 sm:col-span-1">
+                <FormLabel>Last Name</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g. Doe" {...field} />
                 </FormControl>

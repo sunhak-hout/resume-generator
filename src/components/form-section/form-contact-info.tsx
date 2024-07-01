@@ -63,7 +63,7 @@ export const FormContactInfo: React.FC = () => {
             control={form.control}
             name="phone"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="col-span-2 sm:col-span-1">
                 <FormLabel>Phone</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g. +855XXXXXXXX" {...field} />
@@ -76,7 +76,7 @@ export const FormContactInfo: React.FC = () => {
             control={form.control}
             name="email"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="col-span-2 sm:col-span-1">
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <Input placeholder="e.g. sample@example.com" {...field} />
