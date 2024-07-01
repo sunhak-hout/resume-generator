@@ -83,10 +83,10 @@ const TemplateResult: React.FC = () => {
   };
 
   return (
-    <Card className="h-full w-full overflow-auto p-6" ref={containerRef}>
+    <Card className="w-full p-6" ref={containerRef}>
       <div className="mb-4 flex items-center gap-2">
         <div className="mr-auto">
-          <h3 className="text-lg font-medium">Template Result</h3>
+          <h3 className="text-lg font-semibold">Template Result</h3>
           <p className="text-sm text-muted-foreground">
             Preview your resume on realtime updates.
           </p>

@@ -10,7 +10,7 @@ const Timeline: React.FC<TimelineProps> = ({ children, className }) => {
   return (
     <ol
       className={cn(
-        "relative flex flex-col gap-8 border-s border-gray-200 dark:border-gray-700",
+        "relative flex flex-col gap-8 border-s border-primary/10",
         className,
       )}
     >

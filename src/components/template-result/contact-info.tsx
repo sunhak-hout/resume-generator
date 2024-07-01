@@ -7,7 +7,7 @@ const ContactInfo: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-2 px-4 py-4">
+      <div className="flex flex-col gap-2 px-4 py-6">
         <div className="flex items-start gap-2">
           <PhoneCall className="h-5 w-5 flex-shrink-0" />
           <span className="text-sm print:leading-loose">

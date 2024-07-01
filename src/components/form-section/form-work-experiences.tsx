@@ -80,10 +80,7 @@ const FormWorkExperience: React.FC = () => {
                     <FormItem className="col-span-2">
                       <FormLabel>Company Name</FormLabel>
                       <FormControl>
-                        <Input
-                          placeholder="e.g. Xpress Mgr"
-                          {...field}
-                        />
+                        <Input placeholder="e.g. Xpress Mgr" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -142,7 +139,7 @@ const FormWorkExperience: React.FC = () => {
                       <FormControl>
                         <Textarea
                           placeholder="Tell us what you do there"
-                          className="resize-none"
+                          className="resize-y"
                           {...field}
                         />
                       </FormControl>

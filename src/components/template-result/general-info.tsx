@@ -28,7 +28,7 @@ const GeneralInfo: React.FC = () => {
         {generalInfo?.jobTitle || "----"}
       </h6>
       <span
-        className={cn("mt-1 text-center text-sm italic print:leading-loose", {
+        className={cn("mt-2 text-center text-sm italic print:leading-loose", {
           hidden: !generalInfo?.inspiringQuote,
         })}
       >

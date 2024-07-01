@@ -15,7 +15,7 @@ const Template = forwardRef<HTMLDivElement>((_, ref) => {
         <ContactInfo />
       </div>
 
-      <div className="absolute right-0 top-0 h-full w-[70%] px-4 py-6">
+      <div className="absolute right-0 top-0 h-full w-[70%] px-4 py-6 overflow-hidden">
         <div className="flex flex-col gap-4">
           <WorkExperiences />
           <EducationBackground />

@@ -6,11 +6,11 @@ const EducationBackground: React.FC = () => {
   const { educationBackground } = useStore();
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-4">
       <h4 className="text-lg font-semibold print:leading-loose">
         Education Background
       </h4>
-      <Timeline className="ml-4 gap-2">
+      <Timeline className="ml-4 gap-4">
         {educationBackground?.educations.map((edu, index) => (
           <TimelineItem key={index}>
             <div className="print:leading-loose">
