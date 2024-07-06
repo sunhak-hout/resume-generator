@@ -26,10 +26,10 @@ const WorkExperiences: React.FC = () => {
           <TimelineItem key={index}>
             <div className="print:leading-loose">
               <div className="-mb-1 flex items-baseline justify-between">
-                <h6 className="font-semibold">{exp.company}</h6>
+                <h6 className="font-semibold">{exp.position}</h6>
                 <span className="text-sm">{renderWorkingPeriod(exp)}</span>
               </div>
-              <span className="text-sm">{exp.position}</span>
+              <span className="text-sm">{exp.company}</span>
               <p className="text-sm text-muted-foreground">{exp.description}</p>
             </div>
           </TimelineItem>

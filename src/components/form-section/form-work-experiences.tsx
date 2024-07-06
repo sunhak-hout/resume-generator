@@ -77,19 +77,6 @@ const FormWorkExperience: React.FC = () => {
               <div className="grid grid-cols-2 gap-4" key={ef.id}>
                 <FormField
                   control={form.control}
-                  name={`experiences.${index}.company`}
-                  render={({ field }) => (
-                    <FormItem className="col-span-2">
-                      <FormLabel>Company Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="e.g. Xpress Mgr" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
                   name={`experiences.${index}.position`}
                   render={({ field }) => (
                     <FormItem className="col-span-2">
@@ -99,6 +86,19 @@ const FormWorkExperience: React.FC = () => {
                           placeholder="e.g. Full-Stack Developer"
                           {...field}
                         />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name={`experiences.${index}.company`}
+                  render={({ field }) => (
+                    <FormItem className="col-span-2">
+                      <FormLabel>Company Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g. Xpress Mgr" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
