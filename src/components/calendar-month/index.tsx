@@ -12,9 +12,14 @@ const monthRange = Array.from({ length: 12 }, (_, i) => ({
 interface Props {
   value?: Date | string;
   onChange: (value: Date | null) => void;
+  disabled?: boolean;
 }
 
-const CalendarMonth: React.FC<Props> = ({ value, onChange }) => {
+const CalendarMonth: React.FC<Props> = ({
+  value,
+  onChange,
+  disabled = false,
+}) => {
   const [selectedYear, setSelectedYear] = useState(
     value ? new Date(value).getFullYear() : currentYear,
   );
@@ -48,13 +53,14 @@ const CalendarMonth: React.FC<Props> = ({ value, onChange }) => {
           className="h-7 w-7 rounded-full"
           variant="outline"
           size="icon"
+          disabled={disabled}
           onClick={handleDecreaseYear}
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <span>{selectedYear}</span>
         <Button
-          disabled={selectedYear >= currentYear}
+          disabled={selectedYear >= currentYear || disabled}
           className="h-7 w-7 rounded-full"
           variant="outline"
           size="icon"
@@ -66,6 +72,7 @@ const CalendarMonth: React.FC<Props> = ({ value, onChange }) => {
       <div className="grid grid-cols-4 gap-2 p-2">
         {monthRange.map((m) => (
           <Button
+            disabled={disabled}
             className="h-8 w-full rounded-md"
             variant={checkSelectedMonth(m.value) ? "default" : "outline"}
             key={m.value}

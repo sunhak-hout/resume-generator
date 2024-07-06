@@ -21,6 +21,7 @@ import { Textarea } from "../shadcn/ui/textarea";
 import Timeline, { TimelineItem } from "../timeline";
 import FormDivider from "./form-divider";
 import FormSectionTitle from "./form-section-title";
+import { Checkbox } from "../shadcn/ui/checkbox";
 
 const workExperienceSchema = z.object({
   experiences: z.array(
@@ -29,6 +30,7 @@ const workExperienceSchema = z.object({
       position: z.string(),
       from: z.date().optional(),
       to: z.date().optional(),
+      toPresent: z.boolean().optional(),
       description: z.string(),
     }),
   ),
@@ -125,6 +127,37 @@ const FormWorkExperience: React.FC = () => {
                       <MonthPicker
                         value={field.value}
                         onChange={field.onChange}
+                        disabledCalendar={!!form.getValues(`experiences.${index}.toPresent`)} // prettier-ignore
+                        renderValue={
+                          form.getValues(`experiences.${index}.toPresent`)
+                            ? () => (
+                                <span className="text-primary">Present</span>
+                              )
+                            : undefined
+                        }
+                        footer={
+                          <div className="p-2">
+                            <FormField
+                              control={form.control}
+                              name={`experiences.${index}.toPresent`}
+                              render={({ field }) => (
+                                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+                                  <FormControl>
+                                    <Checkbox
+                                      checked={field.value}
+                                      onCheckedChange={field.onChange}
+                                    />
+                                  </FormControl>
+                                  <div className="leading-none">
+                                    <FormLabel className="cursor-pointer">
+                                      Currently work here!
+                                    </FormLabel>
+                                  </div>
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                        }
                       />
                       <FormMessage />
                     </FormItem>
