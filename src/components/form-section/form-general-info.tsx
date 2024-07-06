@@ -79,7 +79,7 @@ const FormGeneralInfo: React.FC = () => {
       <Card className="flex flex-col gap-4 p-6">
         <FormSectionTitle
           title="General Info"
-          description="This is how others will see you on the site"
+          description="This is where you can add your general info"
         />
         <FormDivider />
 

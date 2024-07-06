@@ -15,7 +15,7 @@ const EducationBackground: React.FC = () => {
           <TimelineItem key={index}>
             <div className="print:leading-loose">
               <div className="-mb-1 flex items-baseline justify-between">
-                <h6 className="font-semibold">{edu.school}</h6>
+                <h6 className="font-semibold">{edu.degree}</h6>
                 <span className="text-sm">
                   {[
                     edu.from ? format(edu.from, "MMM y") : undefined,
@@ -25,7 +25,7 @@ const EducationBackground: React.FC = () => {
                     .join(" - ")}
                 </span>
               </div>
-              <span className="text-sm">{edu.degree}</span>
+              <span className="text-sm">{edu.school}</span>
             </div>
           </TimelineItem>
         ))}

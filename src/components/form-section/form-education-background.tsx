@@ -76,19 +76,6 @@ const FormEducationBackground: React.FC = () => {
               <div className="grid grid-cols-2 gap-4" key={ef.id}>
                 <FormField
                   control={form.control}
-                  name={`educations.${index}.school`}
-                  render={({ field }) => (
-                    <FormItem className="col-span-2">
-                      <FormLabel>School or College</FormLabel>
-                      <FormControl>
-                        <Input placeholder="e.g. CADT" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
                   name={`educations.${index}.degree`}
                   render={({ field }) => (
                     <FormItem className="col-span-2">
@@ -98,6 +85,19 @@ const FormEducationBackground: React.FC = () => {
                           placeholder="e.g. Bachelor's Degree in Computer Science"
                           {...field}
                         />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name={`educations.${index}.school`}
+                  render={({ field }) => (
+                    <FormItem className="col-span-2">
+                      <FormLabel>School or College</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g. CADT" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

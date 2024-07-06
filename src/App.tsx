@@ -1,6 +1,7 @@
 import {
   Drawer,
   DrawerContent,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/components/shadcn/ui/drawer";
 
@@ -29,9 +30,12 @@ function App() {
               href="https://sunhak.dev/"
               target="_blank"
             >
-              By: Sunhak
+              @sunhak.dev
             </a>
           </div>
+          <span className="hidden font-semibold md:block">
+            Source Code Available
+          </span>
           <Button className="rounded-full" variant="outline" size="icon">
             <svg
               className="h-6 w-6"
@@ -56,7 +60,7 @@ function App() {
 
         <div className="lg:hidden">
           <Drawer>
-            <DrawerTrigger>
+            <DrawerTrigger asChild>
               <Button
                 className="fixed bottom-6 right-6 gap-2 rounded-full lg:hidden"
                 size="lg"
@@ -65,11 +69,12 @@ function App() {
                 Preview
               </Button>
             </DrawerTrigger>
-            <DrawerContent>
+            <DrawerContent aria-describedby={undefined}>
+              <DrawerTitle className="hidden" />
               <div className="scrollbar-light-transparent relative h-[calc(100dvh-theme(space.16))] w-full overflow-auto bg-secondary p-4">
                 <TemplateResult />
               </div>
-              <DrawerTrigger>
+              <DrawerTrigger asChild>
                 <Button
                   className="fixed bottom-6 right-6 gap-2 rounded-full lg:hidden"
                   size="lg"
