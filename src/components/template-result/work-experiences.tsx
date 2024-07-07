@@ -1,7 +1,7 @@
 import { useStore } from "@/lib/useStore";
 import { format } from "date-fns";
-import Timeline, { TimelineItem } from "../timeline";
 import { WorkExperience } from "../form-section/form-work-experiences";
+import Timeline, { TimelineItem } from "../timeline";
 
 const WorkExperiences: React.FC = () => {
   const { workExperience } = useStore();

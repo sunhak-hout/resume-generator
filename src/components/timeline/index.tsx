@@ -21,20 +21,29 @@ const Timeline: React.FC<TimelineProps> = ({ children, className }) => {
 
 interface TimelineItemProps {
   children: ReactNode;
+  icon?: ReactNode;
   index?: number;
 }
 
-const TimelineItem: React.FC<TimelineItemProps> = ({ children, index }) => {
+const TimelineItem: React.FC<TimelineItemProps> = ({
+  children,
+  icon,
+  index,
+}) => {
   return (
     <li className="ms-6">
-      <span
-        className={cn(
-          "absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-extrabold text-white",
-          { "-start-1 mt-2 h-2 w-2": typeof index !== "number" },
-        )}
-      >
-        {index}
-      </span>
+      {icon ? (
+        <span className="absolute -start-3">{icon}</span>
+      ) : (
+        <span
+          className={cn(
+            "absolute -start-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs font-extrabold text-white",
+            { "-start-1 mt-2 h-2 w-2": typeof index !== "number" },
+          )}
+        >
+          {index}
+        </span>
+      )}
       {children}
     </li>
   );

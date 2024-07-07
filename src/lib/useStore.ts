@@ -1,6 +1,7 @@
 import { ContactInfo } from "@/components/form-section/form-contact-info";
 import { EducationBackground } from "@/components/form-section/form-education-background";
 import { GeneralInfo } from "@/components/form-section/form-general-info";
+import { LanguagePreference } from "@/components/form-section/form-language";
 import { WorkExperience } from "@/components/form-section/form-work-experiences";
 import { create } from "zustand";
 
@@ -16,6 +17,9 @@ interface Store {
 
   educationBackground: EducationBackground | null;
   setEducationBackground: (educationBackground: EducationBackground) => void;
+
+  languagePreference: LanguagePreference | null;
+  setLanguagePreference: (languagePreference: LanguagePreference) => void;
 }
 
 export const useStore = create<Store>()((set) => ({
@@ -30,4 +34,7 @@ export const useStore = create<Store>()((set) => ({
 
   educationBackground: null,
   setEducationBackground: (educationBackground: EducationBackground) => set({ educationBackground }), // prettier-ignore
+
+  languagePreference: null,
+  setLanguagePreference: (languagePreference: LanguagePreference) => set({ languagePreference }), // prettier-ignore
 }));

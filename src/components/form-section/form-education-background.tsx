@@ -65,7 +65,7 @@ const FormEducationBackground: React.FC = () => {
     <Form {...form}>
       <Card className="flex flex-col gap-4 p-6">
         <FormSectionTitle
-          title="Education "
+          title="Education Background"
           description="This is where you can add your education background"
         />
         <FormDivider />

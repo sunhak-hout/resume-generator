@@ -1,6 +1,7 @@
 import { FormContactInfo } from "./form-contact-info";
 import FormEducationBackground from "./form-education-background";
 import FormGeneralInfo from "./form-general-info";
+import FormLanguage from "./form-language";
 import FormWorkExperience from "./form-work-experiences";
 
 export const FormSection: React.FC = () => {
@@ -13,6 +14,8 @@ export const FormSection: React.FC = () => {
       <FormWorkExperience />
 
       <FormEducationBackground />
+
+      <FormLanguage />
     </div>
   );
 };

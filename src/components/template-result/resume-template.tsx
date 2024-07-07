@@ -3,8 +3,9 @@ import ContactInfo from "./contact-info";
 import GeneralInfo from "./general-info";
 import WorkExperiences from "./work-experiences";
 import EducationBackground from "./education-background";
+import Language from "./language";
 
-const Template = forwardRef<HTMLDivElement>((_, ref) => {
+const ResumeTemplate = forwardRef<HTMLDivElement>((_, ref) => {
   return (
     <div
       ref={ref}
@@ -13,9 +14,10 @@ const Template = forwardRef<HTMLDivElement>((_, ref) => {
       <div className="absolute left-0 top-0 h-full w-[30%] bg-primary/90 text-white">
         <GeneralInfo />
         <ContactInfo />
+        <Language />
       </div>
 
-      <div className="absolute right-0 top-0 h-full w-[70%] px-4 py-6 overflow-hidden">
+      <div className="absolute right-0 top-0 h-full w-[70%] overflow-hidden px-4 py-6 bg-white">
         <div className="flex flex-col gap-4">
           <WorkExperiences />
           <EducationBackground />
@@ -25,4 +27,4 @@ const Template = forwardRef<HTMLDivElement>((_, ref) => {
   );
 });
 
-export default Template;
+export default ResumeTemplate;

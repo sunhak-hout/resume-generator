@@ -5,7 +5,8 @@ import jsPDF from "jspdf";
 import { Download, Loader, Send } from "lucide-react";
 import { createRef, useCallback, useEffect, useState } from "react";
 import { Button } from "../shadcn/ui/button";
-import Template from "./template";
+import ResumeTemplate from "./resume-template";
+import ResumeTemplateContainer from "./resume-template-container";
 
 const TemplateResult: React.FC = () => {
   const { generalInfo } = useStore();
@@ -125,15 +126,11 @@ const TemplateResult: React.FC = () => {
       {/* debug purpose */}
       <div className="hidden h-auto" ref={canvasRef} />
 
-      <div className="relative aspect-[210/297] overflow-hidden">
-        <div ref={resumeContainerRef}>
-          <Template />
-        </div>
+      <ResumeTemplateContainer />
 
-        {/* hidden on purpose for printing quality */}
-        <div className="fixed left-[200%] aspect-[210/297]">
-          <Template ref={resumeRef} />
-        </div>
+      {/* hidden on purpose for printing quality */}
+      <div className="fixed left-[200%] aspect-[210/297]">
+        <ResumeTemplate ref={resumeRef} />
       </div>
     </Card>
   );
