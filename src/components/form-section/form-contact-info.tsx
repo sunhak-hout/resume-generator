@@ -30,7 +30,7 @@ const storedContactInfo: ContactInfo | null = JSON.parse(
 );
 
 export const FormContactInfo: React.FC = () => {
-  const { setContactInfo } = useStore();
+  const setContactInfo = useStore((state) => state.setContactInfo);
 
   const form = useForm<ContactInfo>({
     resolver: zodResolver(contactInfoSchema),

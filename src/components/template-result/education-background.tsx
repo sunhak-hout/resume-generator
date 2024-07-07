@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import Timeline, { TimelineItem } from "../timeline";
 
 const EducationBackground: React.FC = () => {
-  const { educationBackground } = useStore();
+  const educationBackground = useStore((state) => state.educationBackground);
 
   return (
     <div className="flex flex-col gap-4">

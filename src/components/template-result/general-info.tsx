@@ -7,7 +7,7 @@ import { useStore } from "@/lib/useStore";
 import { cn } from "@/lib/utils";
 
 const GeneralInfo: React.FC = () => {
-  const { generalInfo } = useStore();
+  const generalInfo = useStore((state) => state.generalInfo);
 
   return (
     <div className="flex flex-col items-center px-2">

@@ -31,7 +31,7 @@ const storedGeneralInfo: GeneralInfo | null = JSON.parse(
 );
 
 const FormGeneralInfo: React.FC = () => {
-  const { setGeneralInfo } = useStore();
+  const setGeneralInfo = useStore((state) => state.setGeneralInfo);
 
   const form = useForm<GeneralInfo>({
     resolver: zodResolver(generalInfoSchema),

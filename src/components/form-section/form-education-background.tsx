@@ -38,7 +38,9 @@ const storedEducationBackground: EducationBackground | null = JSON.parse(
 );
 
 const FormEducationBackground: React.FC = () => {
-  const { setEducationBackground } = useStore();
+  const setEducationBackground = useStore(
+    (state) => state.setEducationBackground,
+  );
 
   const form = useForm<EducationBackground>({
     resolver: zodResolver(educationBackgroundSchema),

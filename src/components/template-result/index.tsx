@@ -9,7 +9,7 @@ import ResumeTemplate from "./resume-template";
 import ResumeTemplateContainer from "./resume-template-container";
 
 const TemplateResult: React.FC = () => {
-  const { generalInfo } = useStore();
+  const generalInfo = useStore((state) => state.generalInfo);
 
   const [downloading, setDownloading] = useState(false);
 

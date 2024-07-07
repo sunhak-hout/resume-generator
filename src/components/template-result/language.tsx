@@ -2,7 +2,7 @@ import { useStore } from "@/lib/useStore";
 import { SquareCheckBig } from "lucide-react";
 
 const Language: React.FC = () => {
-  const { languagePreference } = useStore();
+  const languagePreference = useStore((state) => state.languagePreference);
 
   return (
     <div className="flex flex-col gap-2 px-4">

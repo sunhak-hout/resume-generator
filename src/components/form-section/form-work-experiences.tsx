@@ -42,7 +42,7 @@ const storedWorkExperience: WorkExperience | null = JSON.parse(
 );
 
 const FormWorkExperience: React.FC = () => {
-  const { setWorkExperience } = useStore();
+  const setWorkExperience = useStore((state) => state.setWorkExperience);
 
   const form = useForm<WorkExperience>({
     resolver: zodResolver(workExperienceSchema),

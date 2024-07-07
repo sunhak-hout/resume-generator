@@ -4,7 +4,7 @@ import { WorkExperience } from "../form-section/form-work-experiences";
 import Timeline, { TimelineItem } from "../timeline";
 
 const WorkExperiences: React.FC = () => {
-  const { workExperience } = useStore();
+  const workExperience = useStore((state) => state.workExperience);
 
   const renderWorkingPeriod = (exp: WorkExperience["experiences"][0]) => {
     const from = exp.from ? format(exp.from, "MMM y") : undefined;

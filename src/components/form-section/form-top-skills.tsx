@@ -16,68 +16,67 @@ import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Card } from "../shadcn/ui/card";
+import { Slider } from "../shadcn/ui/slider";
 import Timeline, { TimelineItem } from "../timeline";
 import FormDivider from "./form-divider";
 import FormSectionTitle from "./form-section-title";
 
-const languagePreferenceSchema = z.object({
-  languages: z.array(
+const topSkillSchema = z.object({
+  skills: z.array(
     z.object({
-      language: z.string(),
-      level: z.string(),
+      skill: z.string(),
+      level: z.number(),
     }),
   ),
 });
 
-export type LanguagePreference = z.infer<typeof languagePreferenceSchema>;
-const storedLanguage: LanguagePreference | null = JSON.parse(
-  localStorage.getItem("languagePreference") || "null",
+export type TopSkill = z.infer<typeof topSkillSchema>;
+const storedTopSkill: TopSkill | null = JSON.parse(
+  localStorage.getItem("topSkill") || "null",
 );
 
-const FormLanguage: React.FC = () => {
-  const setLanguagePreference = useStore(
-    (state) => state.setLanguagePreference,
-  );
+const FormTopSkills: React.FC = () => {
+  const setTopSkill = useStore((state) => state.setTopSkill);
 
-  const form = useForm<LanguagePreference>({
-    resolver: zodResolver(languagePreferenceSchema),
+  const form = useForm<TopSkill>({
+    resolver: zodResolver(topSkillSchema),
     defaultValues: {
-      languages: storedLanguage?.languages || [],
+      skills: storedTopSkill?.skills || [],
     },
   });
 
-  const languageFieldArray = useFieldArray({
+  const skillArrayField = useFieldArray({
     control: form.control,
-    name: "languages",
+    name: "skills",
   });
 
-  const languagePreferenceFields = form.watch();
+  const topSkillFields = form.watch();
   useEffect(() => {
-    setLanguagePreference(languagePreferenceFields);
-    localStorage.setItem("languagePreference", JSON.stringify(languagePreferenceFields)); // prettier-ignore
-  }, [JSON.stringify(languagePreferenceFields)]);
+    setTopSkill(topSkillFields);
+    localStorage.setItem("topSkill", JSON.stringify(topSkillFields)); // prettier-ignore
+  }, [JSON.stringify(topSkillFields)]);
 
   return (
     <Form {...form}>
       <Card className="flex flex-col gap-4 p-6">
         <FormSectionTitle
-          title="Language"
-          description="This is where you can add your language"
+          title="Top Skills"
+          description="This is where you can add your skills"
         />
         <FormDivider />
 
         <Timeline className="ml-2">
-          {languageFieldArray.fields.map((ln, index) => (
+          {skillArrayField.fields.map((ln, index) => (
             <TimelineItem key={ln.id} index={index + 1}>
               <div className="grid grid-cols-2 gap-4" key={ln.id}>
                 <FormField
                   control={form.control}
-                  name={`languages.${index}.language`}
+                  name={`skills.${index}.skill`}
                   render={({ field }) => (
                     <FormItem className="col-span-2">
-                      <FormLabel>Language</FormLabel>
+                      <FormLabel>Skill</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. English" {...field} />
+                        <Input placeholder="e.g. React" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -85,12 +84,16 @@ const FormLanguage: React.FC = () => {
                 />
                 <FormField
                   control={form.control}
-                  name={`languages.${index}.level`}
+                  name={`skills.${index}.level`}
                   render={({ field }) => (
                     <FormItem className="col-span-2">
                       <FormLabel>Level</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g. Fluent" {...field} />
+                        <Slider
+                          onValueChange={field.onChange}
+                          defaultValue={[field.value]}
+                          max={5}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -98,31 +101,29 @@ const FormLanguage: React.FC = () => {
                 />
                 <div
                   className={cn("col-span-2", {
-                    hidden: languageFieldArray.fields.length === 1,
+                    hidden: skillArrayField.fields.length === 1,
                   })}
                 >
                   <Button
                     variant="outline"
                     className="gap-2 text-destructive"
-                    onClick={() => languageFieldArray.remove(index)}
+                    onClick={() => skillArrayField.remove(index)}
                   >
                     <XCircle size={20} />
-                    Delete Education
+                    Delete Skill
                   </Button>
                 </div>
               </div>
             </TimelineItem>
           ))}
-          <TimelineItem index={languageFieldArray.fields.length + 1}>
+          <TimelineItem index={skillArrayField.fields.length + 1}>
             <Button
               variant="outline"
               className="gap-2"
-              onClick={() =>
-                languageFieldArray.append({ language: "", level: "" })
-              }
+              onClick={() => skillArrayField.append({ skill: "", level: 5 })}
             >
               <PlusIcon />
-              Add Language
+              Add Skill
             </Button>
           </TimelineItem>
         </Timeline>
@@ -131,4 +132,4 @@ const FormLanguage: React.FC = () => {
   );
 };
 
-export default FormLanguage;
+export default FormTopSkills;
